@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "nom": "Brayek",
+      "prenom": "Faress",
+      "vue": 2
+    },
+    {
+      "id": "2",
+      "nom": "Ben",
+      "prenom": "Ali",
+      "vue": 0
+    },
+    {
+      "id": "a338",
+      "nom": "Brayek",
+      "prenom": "Faress",
+      "vue": 0
+    }
+  ]
+}
