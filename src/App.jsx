@@ -12,6 +12,10 @@ import RouterCheatSheet from "./pages/RouterCheatSheet.jsx";
 import ReactViteCheatSheet from "./pages/ReactViteCheatSheet.jsx";
 import CrudAppDocumentation from "./pages/CrudAppDocumentation.jsx";
 
+import Projects from "./pages/project/projects.jsx";
+import Project from "./pages/project/project.jsx";
+import AddProject from "./pages/project/addproject.jsx";
+import Dashboard from "./pages/project/dashboard.jsx";
 import "../src/App.css";
 
 // route lil CRUD app wahadha
@@ -28,9 +32,39 @@ const navLinks = [
   { to: "/tailwind-cheat", label: "Tailwind CSS" },
   { to: "/router-cheat", label: "React Router Dom" },
   { to: "/react-vite-cheat", label: "React Vite" },
-  { to: "/crud-app-doc", label: "CRUD App" },
-  { to: "/crud-app", label: "CRUD App" }, // link lil CRUD app
+  { to: "/crud-app-doc", label: "CRUD App Doc" },
+  { to: "/dashboard", label: "CRUD App" }, // link lil CRUD app
 ];
+
+const navLinkscommun = [
+  { to: "/dashboard", label: "Dashboard" },
+  { to: "/projects", label: "projects" },
+  { to: "/addproject", label: "add project" },
+];
+
+function NavBarcommn() {
+  const location = useLocation();
+
+  return (
+    <nav>
+      <div className="max-w-md mx-auto flex flex-wrap gap-x-4 gap-y-2">
+        {navLinkscommun.map((link) => (
+          <Link
+            key={link.to}
+            to={link.to}
+            className={`font-medium px-2 py-1 rounded transition-colors duration-150 ${
+              location.pathname === link.to
+                ? "bg-blue-100 text-blue-900"
+                : "text-blue-700 hover:bg-blue-50"
+            }`}
+          >
+            {link.label}
+          </Link>
+        ))}
+      </div>
+    </nav>
+  );
+}
 
 function NavBar({ user }) {
   const location = useLocation();
@@ -65,15 +99,28 @@ export default function App() {
   const user = useUserStore((state) => state.user);
 
   const location = useLocation();
-  const noLayoutRoutes = ["/crud-app"];
+  const noLayoutRoutes = [
+    "/projects",
+    "/addproject",
+    "/project/:id",
+    "/dashboard",
+  ];
 
   const isNoLayout = noLayoutRoutes.includes(location.pathname);
 
   if (isNoLayout) {
     return (
-      <Routes>
-        <Route path="/crud-app" element={<CrudApp />} />
-      </Routes>
+      <>
+        <NavBarcommn />
+        <main className="bg-white p-6">
+          <Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/addproject" element={<AddProject />} />
+            <Route path="/project/:id" element={<Project />} />
+          </Routes>
+        </main>
+      </>
     );
   }
 

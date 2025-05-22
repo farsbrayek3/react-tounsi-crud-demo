@@ -1,22 +1,18 @@
 {
-  "users": [
+  "projects": [
     {
       "id": "1",
-      "nom": "Brayek",
-      "prenom": "Faress",
-      "vue": 2
+      "name": "Migration Cloud",
+      "status": "encours",
+      "priority": "haute",
+      "deadline": "2025-06-01"
     },
     {
       "id": "2",
-      "nom": "Ben",
-      "prenom": "Ali",
-      "vue": 0
-    },
-    {
-      "id": "a338",
-      "nom": "Brayek",
-      "prenom": "Faress",
-      "vue": 0
+      "name": "Renfonte UI",
+      "status": "termine",
+      "priority": "moyenne",
+      "deadline": "2024-12-15"
     }
   ]
 }
